@@ -2,5 +2,5 @@
 <odoo>
     <menuitem id="main_openacademy_menu" name="Open Academy"/>
     <menuitem id="openacademy_menu" name="Open Academy" parent="main_openacademy_menu"/>   
-
+    <menuitem id="configuration_menu" name="Configuration" parent="main_openacademy_menu"/>
 </odoo>

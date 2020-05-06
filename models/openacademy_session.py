@@ -21,6 +21,7 @@ class OpenenacademySession(models.Model):
     )
     instructor_id = fields.Many2one(
         comodel_name='res.partner', 
+        domain=[('instructor', '=', True)],
     )
     course_id = fields.Many2one(
         comodel_name='openacademy.course',
