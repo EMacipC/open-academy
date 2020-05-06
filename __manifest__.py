@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Open Academy',  # TODO
-    'version': '13.0.0.7.0',  # TODO
+    'version': '13.0.0.8.0',  # TODO
     'author': 'HomebrewSoft',
     'website': 'https://gitlab.com/HomebrewSoft/misc/open_academy',  # TODO
     'depends': [  # TODO Check
