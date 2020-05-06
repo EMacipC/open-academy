@@ -16,5 +16,9 @@ class OpenenacademyCourse(models.Model):
         comodel_name='res.users',
         ondelete='set null', 
         index=True,
-        )
+    )
+    session_ids = fields.One2many(
+        comodel_name='openacademy.session', 
+        inverse_name='course_id', 
+    )
 
