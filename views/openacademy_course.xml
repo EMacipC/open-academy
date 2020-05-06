@@ -9,6 +9,7 @@
                 <sheet>
                     <group>
                         <field name="name" />
+                        <field name="responsible_id"/>
                     </group>
                     <notebook>
                         <page string="Description">
@@ -20,6 +21,29 @@
                     </notebook>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <record id="openacademy_course_view_tree" model="ir.ui.view">
+        <field name="name">openacademy.course.view.tree</field>
+        <field name="model">openacademy.course</field>
+        <field name="arch" type="xml">
+            <tree string="Course Tree">
+                <field name="name"/>
+                <field name="responsible_id"/>
+            </tree>
+        </field>
+    </record>
+
+    
+    <record id="openacademy_course_view_search" model="ir.ui.view">
+        <field name="name">course.search</field>
+        <field name="model">openacademy.course</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="description" />
+            </search>
         </field>
     </record>
 

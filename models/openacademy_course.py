@@ -1,5 +1,7 @@
 # -*- coding: UTF-8 -*-
 from odoo import fields, models
+
+
 class OpenenacademyCourse(models.Model):
     _name = 'openacademy.course'
     _description = 'OpenAcademy Courses'
@@ -10,4 +12,9 @@ class OpenenacademyCourse(models.Model):
         )
     description = fields.Text(
     )
+    responsible_id = fields.Many2one(
+        comodel_name='res.users',
+        ondelete='set null', 
+        index=True,
+        )
 
