@@ -1,8 +1,12 @@
 # -*- coding: UTF-8 -*-
-from odoo import api,fields, models
+from datetime import timedelta
+
+
+from odoo import api,fields, models ,exceptions
 class OpenenacademySession(models.Model):
     _name = 'openacademy.session'
     _description = 'OpenAcademy Session'
+
 
     name = fields.Char(
         required=True,
@@ -41,7 +45,18 @@ class OpenenacademySession(models.Model):
     )
     taken_seats = fields.Float(
          compute='_taken_seats',
-         )
+    )
+    end_date = fields.Date(
+        store=True,
+        compute='_get_end_date', 
+        inverse='_set_end_date'
+    )
+    attendees_count = fields.Integer(
+        compute='_get_attendees_count', 
+        store=True,
+        )
+
+    
 
     @api.depends('seats', 'attendee_ids')
     def _taken_seats(self):
@@ -50,6 +65,32 @@ class OpenenacademySession(models.Model):
                 r.taken_seats = 0.0
             else:
                 r.taken_seats = 100.0 * len(r.attendee_ids) / r.seats
+
+    @api.depends('attendee_ids')
+    def _get_attendees_count(self):
+        for r in self:
+            r.attendees_count = len(r.attendee_ids)
+ 
+    @api.depends('start_date', 'duration')
+    def _get_end_date(self):
+        for r in self:
+            if not (r.start_date and r.duration):
+                r.end_date = r.start_date
+                continue
+
+            # Add duration to start_date, but: Monday + 5 days = Saturday, so
+            # subtract one second to get on Friday instead
+            duration = timedelta(days=r.duration, seconds=-1)
+            r.end_date = r.start_date + duration
+
+    def _set_end_date(self):
+        for r in self:
+            if not (r.start_date and r.end_date):
+                continue
+
+            # Compute the difference between dates, but: Friday - Monday = 4 days,
+            # so add one day to get 5 days instead
+            r.duration = (r.end_date - r.start_date).days + 1
 
     @api.onchange('seats', 'attendee_ids')
     def _verify_valid_seats(self):
@@ -67,5 +108,10 @@ class OpenenacademySession(models.Model):
                     'message': "Increase seats or remove excess attendees",
                 },
             }
+    @api.constrains('instructor_id', 'attendee_ids')
+    def _check_instructor_not_in_attendees(self):
+        for r in self:
+            if r.instructor_id and r.instructor_id in r.attendee_ids:
+                raise exceptions.ValidationError("A session's instructor can't be an attendee")
 
-
+                
