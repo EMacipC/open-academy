@@ -9,8 +9,12 @@
     'data': [  # TODO Check
         # security
         # data
+        # demo
+        'demo/openacademy_course.xml',
         # reports
         # views
+        'views/menus.xml',
+        'views/openacademy_course.xml',
     ],
     'external_dependencies': [  # TODO Check
     ],

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="openacademy_course_view_form" model="ir.ui.view">
+        <field name="name">openacademy.course.view.form</field>
+        <!-- .inherited para herencias -->
+        <field name="model">openacademy.course</field>
+        <field name="arch" type="xml">
+            <form string="Coures Form">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                        <page string="About">
+                            this is an example of a notebook
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="openacademy_course_action" model="ir.actions.act_window">
+        <field name="name">Courses</field>
+        <field name="res_model">openacademy.course</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create the first course
+            </p>
+        </field>
+    </record>
+
+        <menuitem id="courses_menu" name="Courses" parent="openacademy_menu" action="openacademy_course_action"/> 
+        <!-- si el menu es dentro de utro modulo se debe indicar de que modulo vinen con [name].-->
+</odoo>
