@@ -8,8 +8,9 @@
     ],
     'data': [  # TODO Check
         # security
-        'security/grups.xml',
+        'security/groups.xml',
         'security/ir.model.access.csv',
+        'security/openacademy_course.xml',
         # data
         # demo
         'demo/openacademy_course.xml',
@@ -19,6 +20,7 @@
         'views/openacademy_course.xml',
         'views/openacademy_session.xml',
         'views/res_partner.xml',
+        'views/openacademy_session_wizard.xml',
     ],
     'external_dependencies': [  # TODO Check
     ],
