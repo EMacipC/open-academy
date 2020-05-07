@@ -21,6 +21,8 @@ msgid ""
 "<br/>\n"
 "                                    Start date:"
 msgstr ""
+"<br/>\n"
+"                                    Fecha de inicio:"
 
 #. module: open_academy
 #: model_terms:ir.ui.view,arch_db:open_academy.openacad_session__view_kanban
@@ -37,13 +39,13 @@ msgstr ""
 #. module: open_academy
 #: model:ir.model.fields,field_description:open_academy.field_openacademy_session__active
 msgid "Active"
-msgstr ""
+msgstr "Activar"
 
 #. module: open_academy
 #: model:ir.actions.act_window,name:open_academy.launch_session_wizard
 #: model_terms:ir.ui.view,arch_db:open_academy.openacademy_wizard_view_form
 msgid "Add Attendees"
-msgstr ""
+msgstr "Añadir acistente"
 
 #. module: open_academy
 #: model:ir.model.fields,field_description:open_academy.field_res_partner__session_ids

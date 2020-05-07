@@ -15,6 +15,7 @@
         # demo
         'demo/openacademy_course.xml',
         # reports
+        'reports/openacademy_course.xml',
         # views
         'views/menus.xml',
         'views/openacademy_course.xml',
