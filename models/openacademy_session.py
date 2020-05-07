@@ -55,7 +55,7 @@ class OpenenacademySession(models.Model):
         compute='_get_attendees_count', 
         store=True,
         )
-
+    color = fields.Integer()
     
 
     @api.depends('seats', 'attendee_ids')
