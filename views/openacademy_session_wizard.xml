@@ -9,7 +9,7 @@
                     <field name="session_ids"/>
                     <field name="attendee_ids"/>
                 </group>
-                <footer>
+                <footer>                 
                     <button name="subscribe" type="object"
                             string="Subscribe" class="oe_highlight"/>
                     or

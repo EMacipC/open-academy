@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <report
+        id="sale"
+        model="sale.order"
+        string="Sale Report"
+        name="open_academy.openacademy_sale_report_view"
+        file="sale.report"
+        report_type="qweb-pdf" />
+
+    <template id="openacademy_sale_report_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="container">
+                            <div class="row line">
+                                <span t-field="doc.partner_id"/><br/>
+                                <span t-field="doc.partner_invoice_id.street"/><br/>
+                                <span t-field="doc.partner_invoice_id.city"/><br/>
+                                <span t-field="doc.partner_invoice_id.country_id"/><br/>
+                                <span t-field="doc.partner_invoice_id.mobile"/><br/>
+                                <span t-field="doc.partner_invoice_id.phone"/><br/>
+                                <span t-field="doc.partner_invoice_id.email"/><br/>
+                                <p><strong>Order Date: </strong><span t-field="doc.date_order"/> </p>
+                            </div>
+                            <div class="row line">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"><strong>Product</strong></th>
+                                            <th scope="col"><strong>Quantity</strong></th>
+                                            <th scope="col"><strong>Unit Price</strong></th>
+                                            <th scope="col"><strong>Subtotal</strong></th>
+                                        </tr>
+                                    </thead>
+                                    <tr t-foreach="doc.order_line" t-as="l">
+                                        <td>
+                                            <p><span t-field="l.product_id"/></p>
+                                        </td>
+                                        <td>
+                                            <p><span t-field="l.product_uom_qty"/></p>
+                                        </td>
+                                        <td>
+                                            <p><span t-field="l.price_unit"/></p>
+                                        </td>
+                                        <td>
+                                            <p><span t-field="l.price_subtotal"/></p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="row line">
+                                <p><strong>Untaxed Amount: </strong><span t-field="doc.amount_untaxed"/></p>
+                                <p><strong>Taxes: </strong><span t-field="doc.amount_tax"/></p>
+                                <p>_______________________________</p>
+                                <p><strong>Total: </strong><span t-field="doc.amount_total"/></p>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+</odoo>

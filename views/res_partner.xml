@@ -6,6 +6,13 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='mobile']" position="replace">
+                <div class="o_row">
+                    <field name="mobile" widget="whatsapp" type="object" options="{'enable_sms': True}"/>
+                     <button name="whatsapp" type="object"
+                            string="whatsapp" class="oe_highlight"/>
+                </div>
+            </xpath>
             <notebook position="inside">
                 <page string="Sessions">
                     <group>
@@ -14,6 +21,18 @@
                     </group>
                 </page>
             </notebook>
+        </field>
+    </record>
+   
+    <record id="res_partner_view_tree" model="ir.ui.view">
+        <field name="name">res.partner.view.tree</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml" >
+            <tree>
+                <button name="whatsapp" type="object"
+                        string="whatsapp" class="oe_highlight" />
+            </tree>
         </field>
     </record>
 
